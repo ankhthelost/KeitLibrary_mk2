@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{noSideBarLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="main" th:object="${lendForm}">
+		<h2>貸出確認</h2>
+		
+		<div class="lendCheck" >
+		<table>
+			<tr>
+				<th>書籍名: </th>
+				<td><span th:text="${lendBean.book.bookName}"></span></td>
+			</tr>
+			<tr>
+				<th>貸出者: </th>
+				<td><span th:text="${lendBean.userName}"></span></td>
+			</tr>
+			<tr>
+				<th>メールアドレス: </th>
+				<td><span th:text="${lendBean.mailAddress}"></span></td>
+			</tr>
+			<tr>
+				<th>お届け先: </th>
+				<td><span th:text="${lendBean.address}"></span></td>
+			</tr>
+			<tr>
+				<th>電話番号: </th>
+				<td><span th:text="${lendBean.phoneNumber}"></span></td>
+			</tr>
+		</table>
+		<form th:action="@{/lend/input}" th:method="get">
+			<input type="hidden" th:field="*{userName}" th:value="${lendBean.userName}">
+			<input type="hidden" th:field="*{mailAddress}" th:value="${lendBean.mailAddress}">
+			<input type="hidden" th:field="*{address}" th:value="${lendBean.address}">
+			<input type="hidden" th:field="*{phoneNumber}" th:value="${lendBean.phoneNumber}">
+			<input type="hidden" name="bookId" th:value="${lendBean.book.bookId}">
+			<input type="submit"  value="戻る" >
+		</form>
+		<form th:action="@{/lend/complete}" th:method="post">
+			<input type="hidden" th:field="*{userName}" th:value="${lendBean.userName}">
+			<input type="hidden" th:field="*{mailAddress}" th:value="${lendBean.mailAddress}">
+			<input type="hidden" th:field="*{address}" th:value="${lendBean.address}">
+			<input type="hidden" th:field="*{phoneNumber}" th:value="${lendBean.phoneNumber}">
+			<input type="hidden" name="bookId" th:value="${lendBean.book.bookId}">
+			<input type="submit" value="予約を完了する" >
+		</form>
+		</div>
+	</div>
+</body>
+</html>

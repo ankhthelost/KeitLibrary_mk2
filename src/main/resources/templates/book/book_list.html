@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{bookLayout :: layout(~{::body/content()})}">
+<head>
+<meta http-equiv="content-type"  charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="main">
+			<div th:object="${bookForm}">
+				<h2>書籍名検索</h2>
+		
+				<p>検索したい名前を入力してください</p>
+		
+				<form th:action="@{/book/result}" th:method="post">
+					<input type="text" th:field="*{bookName}">
+					<input type="submit" value="検索">
+				</form>
+				
+			<div th:if = "${bookBeans != null}">
+			<p>書籍検索結果</p>
+			<table>
+				<tr>
+					<th>No.</th>
+					<th>書籍名</th>
+				</tr>
+				<tr th:each = "book, st: ${bookBeans}">
+					<td th:text="${st.count}"></td>
+					<td><a th:href="@{/book/detail/} + ${book.bookName}"><span th:text="${book.bookName}"></span></a></td>
+				</tr>
+			</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

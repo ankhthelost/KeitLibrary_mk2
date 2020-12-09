@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<title>Keit Library| ログイン画面</title>
+</head>
+<body>
+	<div class="title">
+	<h1>
+		<a th:href="@{/}">Keit Library</a>
+	</h1>
+	</div>
+	<div th:object="${loginForm}">
+		<h2>ログイン</h2>
+		
+		<ul>
+			<li th:each="error:${#fields.detailedErrors()}">
+				<span th:text="${error.message}"></span>
+			</li>
+		</ul>
+	
+		<p>メールアドレスとパスワードを入力してください</p>
+		<form method="post" action="/keit/">
+		メールアドレス: <input type="text" th:field="*{mailAddress}"><br />
+	
+		パスワード: <input type="password" th:field="*{password}"><br />
+		
+		<input type="submit" value="ログイン">
+		</form>
+	</div>
+	<div class="footer" id="footer" th:fragment="layout-footer">
+	<div class="copyright">
+		<p>Copyright &copy; SSSS. Keit Library</p>
+	</div>
+</div>
+</body>
+</html>

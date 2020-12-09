@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{noSideBarLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div id = "wrap">
+		<div id="contact">
+			<div class = "main-center">
+				<h2>お客様情報入力画面</h2>
+				<p>下記の項目を記入してください。</p>
+				<section>
+					<div class="form" th:object="${lendForm}">
+						<form method="post" th:action="@{/lend/check}">
+							<dl>
+								<dt><span class="required">お名前</span></dt>
+								<dd><input type = "text" th:field="*{userName}" th:value="${session.user.userName}" class = "name" required></dd>
+								<dt><span class="required">メールアドレス</span></dt>
+								<dd><input type = "email" th:field="*{mailAddress}" th:value="${lendForm.mailAddress}" class = "email" required></dd>
+								<dt>お電話番号</dt>
+								<dd><input type = "tel" th:field = "*{phoneNumber}" th:value="${lendForm.phoneNumber}" class = "tel"></dd>
+								<dt>お届け先住所</dt>
+								<dd><textarea name = "message" th:field="*{address}" th:value="${lendForm.address}" class = "message"></textarea></dd>
+							</dl>
+							<input type = "hidden" th:field="*{bookId}" th:value="${bookId}">
+							<input type = "submit" class = "btn" value="確認画面へ進む">
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

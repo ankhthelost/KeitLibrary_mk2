@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{noSideBarLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id = "wrap">
+		<div id="contact">
+			<div class = "main-center">
+				<h2>お客様情報入力画面</h2>
+				<p>下記の項目を記入してください。</p>
+				<section>
+					<div class="form" th:object="${userForm}">
+						<form method="post" th:action="@{/user/check}">
+							<dl>
+								<dt><span class="required">お名前</span></dt>
+								<dd><input type = "text" th:field="*{userName}"  class = "name" required></dd>
+								<dt><span class="required">メールアドレス</span></dt>
+								<dd><input type = "email" th:field="*{mailAddress}"  class = "email" required></dd>
+								<dt><span class="required">パスワード</span></dt>
+								<dd><input type = "text" th:field = "*{password}"  class = "password" required></dd>
+							</dl>
+							<input type = "submit" class = "btn" value="確認画面へ進む">
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

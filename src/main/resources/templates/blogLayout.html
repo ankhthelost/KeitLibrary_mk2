@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:fragment="layout(body)" lang="ja">
+<head>
+<meta charset="UTF-8">
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<title>Keit Library</title>
+</head>
+<body>
+	<div class="header" th:replace="~{commons/blogs/header :: layout-header}"></div>
+	<div class="container">
+		<div class="main"  th:replace="${body}"></div>
+		<div class="sidebar" th:replace="~{commons/blogs/sidebar :: layout-sidebar}"></div>
+	</div>
+	<div th:replace="~{commons/blogs/footer :: layout-footer}"></div>
+</body>
+</html>

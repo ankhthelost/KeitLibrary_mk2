@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>予約リスト</h2>
+	
+	<div th:if="">
+		<span class="lendListIsEmpty">予約リストは空です。</span>
+	</div>
+	
+	<div th:if="">
+		<table class="lendList">
+			<tr>
+				<th>No.</th>
+				<th>書籍名</th>
+				<th>著者</th>
+				<th>ジャンル</th>
+			</tr>
+			<tr>
+				<td><span th:text="${book.bookId}"></span></td>
+				<td><span th:text="${book.bookName}"></span></td>
+				<td><a th:href="@{/book/findByAuthor} + ${book.author.authorId}"><span th:text="${book.author.authorName}"></span></a></td>
+				<td><a th:href="@{/book/findByGenre} + ${book.genre.genreId}"><span th:text="${book.genre.genreName}"></span></a></td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

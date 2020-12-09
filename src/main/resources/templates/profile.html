@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{noSideBarLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- wrap始まり -->
+	<div id = "wrap">
+			<div class = "main-center">
+				<h1>About me</h1>
+				<p>英文学者上がりのエンジニアの自己紹介ページです。</p>
+				<section class="profile clearfix">
+					<div class = "profile-txt">
+						<h2 class="icon">Profile</h2>
+						<p><span>Keit Library 管理者: Keit</span><br> 元・欧米文学語学の院生で、現在は都内某所でエンジニアまがいのことをしている。
+						<br> この世の中におり、それでいてこの世のちょっと外側にいるような、文明のエッジロケーションに属している。
+						<br> 専門としていたアメリカ作家はソローであるが、最近では時代や地域を問わず作品を読んでいる。</p>
+					</div>
+					<!--  <img src="image/Cape_Cod.png" alt="Keitプロフィール画像" class="profile-image"> -->
+				</section>
+				<section class = "career">
+					<h2 class = "icon">History of Myself</h2>
+					<table>
+						<tr>
+							<th>19xx年3月</th>
+							<td>沖縄県某所に生まれる</td>
+						</tr>
+						<tr>
+							<th>2012年2月</th>
+							<td>アメリカに3か月間の留学へ行き、そこでLanguage Artという講義を受ける。</td>
+						</tr>
+						<tr>
+							<th>2018年4月</th>
+							<td>某大学文学研究科へ入学。二年間アメリカン・ルネサンスの作家を研究する。</td>
+						</tr>
+						<tr>
+							<th>2020年4月</th>
+							<td>大学院を修了し、現職に至る。</td>
+						</tr>
+					</table>
+				</section>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

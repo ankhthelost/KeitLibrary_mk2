@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{bookLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="main">
+
+		<h2>書誌詳細</h2>
+		
+		<div class="bookDetail">
+		<table>
+			<tr>
+				<th>書籍名: </th>
+				<td><span th:text="${book.bookName}"></span></td>
+			</tr>
+			 <!-- <tr>
+				<th>著者: </th>
+				To Do: th:each文で全員呼び出す
+				<td><span th:text="${book.author.authorName}"></span></td>
+			</tr> -->
+			<tr>
+				<th>出版社: </th>
+				<td><span th:text="${book.publisherName}"></span></td>
+			</tr>
+			<tr>
+				<th>出版年: </th>
+				<td><span th:text="${book.publishDate}"></span></td>
+			</tr>
+			<tr>
+				<th>状態: </th>
+				<td><span th:text="${book.statusName}"></span></td>
+			</tr>
+			<!-- <tr>
+				<th>ジャンル: </th>
+				<td><span th:text="${book.genreName}"></span></td>
+			</tr> -->
+		</table>
+		<form th:action="@{/book}" th:method="get">
+			<input type="submit"  value="戻る" >
+		</form>
+		<form th:action="@{/lend/input}" th:method="get">
+			<input type="hidden" name="bookId" th:value="${book.bookId}">
+			<input type="submit" value="予約画面へ" >
+		</form>
+		</div>
+	</div>
+</body>
+</html>

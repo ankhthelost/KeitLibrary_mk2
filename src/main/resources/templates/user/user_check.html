@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+	th:replace="~{noSideBarLayout :: layout(~{::body/content()})}">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<div class="main" th:object="${userForm}">
+		<h2>ユーザー情報確認</h2>
+		
+		<div class="userCheck" >
+		<table>
+			<tr>
+				<th>お名前: </th>
+				<td><span th:text="${userBean.userName}"></span></td>
+			</tr>
+			<tr>
+				<th>メールアドレス: </th>
+				<td><span th:text="${userBean.mailAddress}"></span></td>
+			</tr>
+			<tr>
+				<th>パスワード: </th>
+				<td><span th:text="${userBean.password}"></span></td>
+			</tr>
+		</table>
+		<form th:action="@{/user/input}" th:method="get">
+			<input type="hidden" th:field="*{userName}" th:value="${userBean.userName}">
+			<input type="hidden" th:field="*{mailAddress}" th:value="${userBean.mailAddress}">
+			<input type="hidden" th:field="*{password}" th:value="${userBean.password}">
+			<input type="submit"  value="戻る" >
+		</form>
+		<form th:action="@{/user/complete}" th:method="post">
+			<input type="hidden" th:field="*{userName}" th:value="${userBean.userName}">
+			<input type="hidden" th:field="*{mailAddress}" th:value="${userBean.mailAddress}">
+			<input type="hidden" th:field="*{password}" th:value="${userBean.password}">
+			<input type="submit" value="ユーザ作成" >
+		</form>
+		</div>
+	</div>
+</body>
+</html>
