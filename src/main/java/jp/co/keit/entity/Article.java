@@ -29,6 +29,9 @@ public class Article {
 	@ManyToOne
 	@JoinColumn(name = "category_id", referencedColumnName = "categoryId")
 	private Category category;
+	
+	@Column
+	private Short deleteFlg;
 
 	public Integer getArticleId() {
 		return articleId;
@@ -61,7 +64,12 @@ public class Article {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
-	
+
+	public Short getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(Short deleteFlg) {
+		this.deleteFlg = deleteFlg;
+	}
 }

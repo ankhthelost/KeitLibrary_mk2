@@ -1,13 +1,10 @@
 package jp.co.keit.entity;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,8 +25,8 @@ public class User {
 	@Column
 	private String password;
 	
-	@OneToMany(mappedBy = "user")
-	private List<Book> bookList;
+	@Column
+	private Short deleteFlg;
 
 	public Integer getUserId() {
 		return userId;
@@ -61,14 +58,6 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public List<Book> getBookList() {
-		return bookList;
-	}
-
-	public void setBookList(List<Book> bookList) {
-		this.bookList = bookList;
 	}
 	
 }

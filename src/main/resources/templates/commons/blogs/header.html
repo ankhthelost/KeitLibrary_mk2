@@ -1,3 +1,5 @@
+<html xmlns:th="http://www.thymeleaf.org" th:remove="tag">
+<meta charset="UTF-8" />
 <div id="header" th:fragment="layout-header">
 <div class="title">
 	<h1>
@@ -10,7 +12,7 @@
 	
 	<ul th:if="${session.user != null}">
 		<li><a th:href="@{/logout}">Log-out</a></li>
-		<li>Welcome to Keit Library, <span th:text = "${session.user.userName}"></span></li>
+		<li>Welcome, <span th:text = "${session.user.userName}"></span></li>
 	</ul>
 </div>
 

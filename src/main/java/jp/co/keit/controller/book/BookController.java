@@ -14,12 +14,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import jp.co.keit.bean.AuthorBean;
+
 import jp.co.keit.bean.BookBean;
-import jp.co.keit.bean.GenreBean;
-import jp.co.keit.entity.Author;
 import jp.co.keit.entity.Book;
-import jp.co.keit.entity.Genre;
 import jp.co.keit.form.BookForm;
 import jp.co.keit.repository.AuthorRepository;
 import jp.co.keit.repository.BookRepository;
@@ -39,39 +36,6 @@ public class BookController {
 
 	@RequestMapping (path = "/book",  method = RequestMethod.GET)
 	public String moveToBookList(@ModelAttribute BookForm bookForm,  Model model) {
-		List<Book> bookList = bookRepository.findAll();
-		List<BookBean> books = new ArrayList<>();
-		
-		for(Book book : bookList) {
-			BookBean bookBean = new BookBean();
-			bookBean.setBookName(book.getBookName());
-			bookBean.setPublisherName(book.getPublisher().getPublisherName());
-			bookBean.setPublishDate(book.getPublishDate());
-			bookBean.setStatusName(book.getStatus().getStatusName());
-			books.add(bookBean);
-		}
-		
-		List<Genre> genreList = genreRepository.findAll();
-		List<GenreBean> genres = new ArrayList<>();
-		
-		for(Genre genre : genreList) {
-			GenreBean genreBean = new GenreBean();
-			genreBean.setGenreName(genre.getGenreName());
-			genres.add(genreBean);
-		}
-		
-		List<Author> authorList = authorRepository.findAll();
-		List<AuthorBean> authors = new ArrayList<>();
-		
-		for(Author author : authorList) {
-			AuthorBean authorBean = new AuthorBean();
-			authorBean.setAuthorName(author.getAuthorName());
-			authors.add(authorBean);
-		}
-		
-		model.addAttribute("genres", genres);
-		model.addAttribute("authors", authors);
-		model.addAttribute("books", books);
 				
 		return "book/book_list";
 	}
@@ -91,6 +55,7 @@ public class BookController {
 				BookBean bookBean = new BookBean();
 				
 				bookBean.setBookName(book.getBookName());
+				bookBean.setStatusName(book.getStatus().getStatusName());
 				bookBeans.add(bookBean);
 			}
 			

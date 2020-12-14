@@ -23,10 +23,12 @@
 				<tr>
 					<th>No.</th>
 					<th>書籍名</th>
+					<th>状態</th>
 				</tr>
 				<tr th:each = "book, st: ${bookBeans}">
 					<td th:text="${st.count}"></td>
 					<td><a th:href="@{/book/detail/} + ${book.bookName}"><span th:text="${book.bookName}"></span></a></td>
+					<td th:text="${book.statusName}"></td>
 				</tr>
 			</table>
 			</div>

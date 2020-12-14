@@ -38,6 +38,9 @@ public class Order {
 	
 	@Column
 	private String sendPhoneNum;
+	
+	@Column
+	private Short deleteFlg;
 
 	public Integer getOrderId() {
 		return orderId;
@@ -93,5 +96,13 @@ public class Order {
 
 	public void setSendPhoneNum(String sendPhoneNum) {
 		this.sendPhoneNum = sendPhoneNum;
+	}
+
+	public Short getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(Short deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 }

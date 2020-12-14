@@ -102,6 +102,7 @@ public class LendController {
 			order.setSendAddress(lendBean.getAddress());
 			order.setSendMailAddress(lendBean.getMailAddress());
 			order.setSendPhoneNum(lendBean.getPhoneNumber());
+			order.setDeleteFlg((short)0);
 			
 			// Ordersテーブルに登録
 			order = orderRepository.save(order);

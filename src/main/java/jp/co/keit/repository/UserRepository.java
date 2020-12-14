@@ -8,6 +8,6 @@ import jp.co.keit.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Integer> {
 	
-	@Query("SELECT u FROM User u WHERE mailAddress = :mailAddress AND password = ORA_HASH(:password)")
+	@Query("SELECT u FROM User u WHERE mailAddress = :mailAddress AND password = ORA_HASH(:password) AND deleteFlg = 0")
 	User findByMailAddressAndPassword(String mailAddress, String password);
 }

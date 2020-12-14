@@ -1,5 +1,6 @@
 package jp.co.keit.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,6 +26,9 @@ public class GenresBooks {
 	@ManyToOne
 	@JoinColumn(name = "book_id", referencedColumnName = "bookId")
 	private Book book;
+	
+	@Column
+	private Short deleteFlg;
 
 	public Integer getGenresBooksId() {
 		return genresBooksId;
@@ -48,6 +52,14 @@ public class GenresBooks {
 
 	public void setBook(Book book) {
 		this.book = book;
+	}
+
+	public Short getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(Short deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 	
 	

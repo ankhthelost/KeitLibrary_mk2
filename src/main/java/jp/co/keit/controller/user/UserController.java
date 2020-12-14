@@ -23,7 +23,6 @@ public class UserController {
 	@Autowired
 	EntityManager entityManager;
 	
-	
 	@RequestMapping(path = "/user/regist", method = RequestMethod.GET)
 	public String moveToUserRegist(@ModelAttribute UserForm userForm) {
 		return "user/user_regist";
@@ -56,13 +55,15 @@ public class UserController {
 			return "user/user_check";
 		}
 		
-		Query query = entityManager.createNativeQuery("INSERT INTO users(USER_ID, USER_NAME, MAIL_ADDRESS, PASSWORD, ROLE) VALUES (seq_users.NEXTVAL, :userName, :mailAddress, ORA_HASH(:password), :role)");
+		Query query = entityManager.createNativeQuery("INSERT INTO users(USER_ID, USER_NAME, MAIL_ADDRESS, PASSWORD, ROLE, DELETE_FLG) VALUES (seq_users.NEXTVAL, :userName, :mailAddress, ORA_HASH(:password), :role, :deleteFlg)");
 		
 		
 		query.setParameter("userName", userForm.getUserName());
 		query.setParameter("mailAddress", userForm.getMailAddress());
         query.setParameter("password", userForm.getPassword());
         query.setParameter("role", 1);
+        query.setParameter("deleteFlg", 0);
+        
         
         query.executeUpdate();
 		

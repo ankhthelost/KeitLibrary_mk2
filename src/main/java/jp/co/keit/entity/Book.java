@@ -35,15 +35,14 @@ public class Book {
 	private Status status;
 	
 	@ManyToOne
-	@JoinColumn(name = "user_id", referencedColumnName = "userId")
-	private User user;
-	
-	@ManyToOne
 	@JoinColumn(name = "publisher_id", referencedColumnName = "publisherId")
 	private Publisher publisher;
 	
 	@Column
 	private String image;
+	
+	@Column
+	private Short deleteFlg;
 
 	public Integer getBookId() {
 		return bookId;
@@ -85,14 +84,6 @@ public class Book {
 		this.status = status;
 	}
 
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
 	public Publisher getPublisher() {
 		return publisher;
 	}
@@ -107,6 +98,14 @@ public class Book {
 
 	public void setImage(String image) {
 		this.image = image;
+	}
+
+	public Short getDeleteFlg() {
+		return deleteFlg;
+	}
+
+	public void setDeleteFlg(Short deleteFlg) {
+		this.deleteFlg = deleteFlg;
 	}
 
 }
