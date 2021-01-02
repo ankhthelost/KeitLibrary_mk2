@@ -7,7 +7,23 @@
 </head>
 <body>
 	<div id = "wrap">
-	
+	<div class = "main-center">
+		<h1>ユーザー詳細</h1>
+		<table>
+			<tr>
+				<th>ユーザー名: </th>
+				<td><span th:text="${book.bookName}"></span></td>
+			</tr>
+			  <tr>
+				<th>メールアドレス: </th>
+				<td><span th:text="${book.author.authorName}"></span></td>
+			</tr> 
+			<tr>
+				<th>住所: </th>
+				<td><span th:text="${book.publisherName}"></span></td>
+			</tr>
+		</table>
+	</div>
 	</div>
 </body>
 </html>

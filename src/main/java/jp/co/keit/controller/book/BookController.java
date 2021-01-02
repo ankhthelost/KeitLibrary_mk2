@@ -1,6 +1,5 @@
 package jp.co.keit.controller.book;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -16,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 
 import jp.co.keit.bean.BookBean;
-import jp.co.keit.entity.Book;
 import jp.co.keit.form.BookForm;
 import jp.co.keit.repository.AuthorRepository;
 import jp.co.keit.repository.BookRepository;
 import jp.co.keit.repository.GenreRepository;
+import jp.co.keit.service.BookService;
 
 @Controller
 public class BookController {
@@ -33,6 +32,9 @@ public class BookController {
 	
 	@Autowired
 	AuthorRepository authorRepository;
+	
+	@Autowired
+	BookService bookService;
 
 	@RequestMapping (path = "/book",  method = RequestMethod.GET)
 	public String moveToBookList(@ModelAttribute BookForm bookForm,  Model model) {
@@ -47,17 +49,7 @@ public class BookController {
 			return "book/book_list";
 		}else {
 			
-			List<Book> books = bookRepository.findByBookNameLike("%" + bookForm.getBookName() + "%");
-			
-			List<BookBean> bookBeans = new ArrayList<>();
-			
-			for(Book book : books) {
-				BookBean bookBean = new BookBean();
-				
-				bookBean.setBookName(book.getBookName());
-				bookBean.setStatusName(book.getStatus().getStatusName());
-				bookBeans.add(bookBean);
-			}
+			List<BookBean> bookBeans = bookService.getBookByNameLike(bookForm);
 			
 			model.addAttribute("bookBeans", bookBeans);
 			
@@ -68,16 +60,7 @@ public class BookController {
 	@RequestMapping (path = "/book/detail/{bookName}", method = RequestMethod.GET)
 	public String showBookDetail (@PathVariable String bookName, Model model) {
 		
-		Book book = bookRepository.findByBookName(bookName);
-		
-		BookBean bookBean = new BookBean();
-		
-		bookBean.setBookId(book.getBookId());
-		bookBean.setBookName(book.getBookName());
-		bookBean.setPublisherName(book.getPublisher().getPublisherName());
-		bookBean.setPublishDate(book.getPublishDate());
-		bookBean.setStatusName(book.getStatus().getStatusName());
-		bookBean.setSummary(book.getSummary());
+		BookBean bookBean = bookService.getBook(bookName);
 		
 		model.addAttribute("book", bookBean);
 		
